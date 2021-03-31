@@ -1,0 +1,24 @@
+import androidhelper
+
+droid = androidhelper.Android()
+
+class Voz():
+    
+    
+    def falar(self,entrada):
+        print(entrada)
+        droid.ttsSpeak(entrada)
+        
+        while droid.ttsIsSpeaking()[1]:
+            pass
+     
+        return entrada
+
+    def ouvir(self):
+    
+          (id,result,error)=droid.recognizeSpeech("fale")
+          entrada=result
+          return entrada
+          
+ent = Voz.ouvir()    
+Voz.falar("Você falou: "+ent)
